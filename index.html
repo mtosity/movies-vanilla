@@ -33,7 +33,7 @@
     <div class="container-fulid">
       <!-- navigaiton -->
       <nav class="navbar-expand-lg navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Minhtamos movies list</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -48,14 +48,6 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#"
-                >Home <span class="sr-only">(current)</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -66,23 +58,13 @@
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Dropdown
+                Sort by
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown-menu bg-info" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item " href="#">Popular</a>
+                <a class="dropdown-item" href="#">Top rated</a>
+                <a class="dropdown-item" href="#">Upcoming</a>
               </div>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link disabled"
-                href="#"
-                tabindex="-1"
-                aria-disabled="true"
-                >Disabled</a
-              >
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
@@ -104,14 +86,23 @@
       <div class="ml-5">
         <nav aria-label="Page navigation example m-2">
           <ul class="pagination">
-            <li id="li1" class="page-item active" onclick="change_page('1')">
+            <li id="li1" class="page-item active" onclick="ChangePage(1, 'popular')">
               <a class="page-link" href="#">1</a>
             </li>
-            <li id="li2" class="page-item" onclick="change_page('2')">
+            <li id="li2" class="page-item" onclick="ChangePage(2, 'popular')">
               <a class="page-link" href="#">2</a>
             </li>
-            <li id="li3" class="page-item" onclick="change_page('3')">
+            <li id="li3" class="page-item" onclick="ChangePage(3, 'popular')">
               <a class="page-link" href="#">3</a>
+            </li>
+            <li id="li4" class="page-item" onclick="ChangePage(4, 'popular')">
+              <a class="page-link" href="#">4</a>
+            </li>
+            <li id="li5" class="page-item" onclick="ChangePage(5, 'popular')">
+              <a class="page-link" href="#">5</a>
+            </li>
+            <li id="li6" class="page-item" onclick="ChangePage(6, 'popular')">
+              <a class="page-link" href="#">6</a>
             </li>
           </ul>
         </nav>

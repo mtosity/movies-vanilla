@@ -13,20 +13,21 @@ async function GetPage(page, sort) {
   }
 }
 
-async function DisplayPage(page) {
+async function DisplayPage(page, sort) {
   $("#body-list").empty();
-  movies = await GetPage(page, "popular");
+  movies = await GetPage(page, sort);
+  console.log(movies[0]);
   movies_count = movies.length;
   console.log(movies);
   for (i = 0; i < 20; i += 2) {
-    rowID = i/2;
+    rowID = i / 2;
     $("#body-list").append(`
-        <div class="card-group p-5" id="row-${rowID}">
+        <div class="row p-5" id="row-${rowID}">
         </div>
     `);
-    for(j=i;j<i+2;j++){
-        $(`#row-${rowID}`).append(`
-            <div class="card mb-3">
+    for (j = i; j < i + 2; j++) {
+      $(`#row-${rowID}`).append(`
+            <div class="card mb-3 col mx-2">
                 <div class="row no-gutters">
                 <div class="col-md-4 text-center">
                     <img src="https://image.tmdb.org/t/p/original/${movies[j].poster_path}" class="card-img" alt="...">
@@ -35,16 +36,23 @@ async function DisplayPage(page) {
                 <div class="col-md-8">
                     <div class="card-body">
                     <h5 class="card-title">${movies[j].title}</h5>
+                    <p class="card-text text-info">Rated: ${movies[j].vote_average}</p>
                     <p class="card-text">${movies[j].overview}</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <p class="card-text"><small class="text-muted">${movies[j].release_date} ${movies[j].original_language}</small></p>
                     </div>
                 </div>
                 </div>
             </div>
-        `)
+        `);
     }
   }
 }
 
+async function ChangePage(page, sort) {
+  $("li").removeClass("active");
+  $(`#li${page}`).addClass("active");
 
-DisplayPage(1);
+  DisplayPage(page, sort);
+}
+
+ChangePage(1, "popular");
