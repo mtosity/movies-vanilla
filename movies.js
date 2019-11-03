@@ -1,11 +1,14 @@
 API_KEY = "3fe7b5a7adaa97e1054290890325f265";
+PAGE = 1;
+SORTBY = "popular";
+IS_SEARCH = false;
+QUERY = "";
+FETCH_LINK = `https://api.themoviedb.org/3/movie/${SORTBY}?api_key=${API_KEY}&page=${PAGE}`;
 
-async function GetPage(page, sort) {
-  res = await fetch(
-    `https://api.themoviedb.org/3/movie/${sort}?api_key=${API_KEY}&page=${page}`
-  );
+async function GetPage() {
+  res = await fetch(FETCH_LINK);
   res_json = await res.json();
-  if (res_json.page === page) {
+  if (res_json.page === PAGE) {
     movies = res_json.results;
     return movies;
   } else {
@@ -13,13 +16,20 @@ async function GetPage(page, sort) {
   }
 }
 
-async function DisplayPage(page, sort) {
+async function DisplayPage() {
   $("#body-list").empty();
-  movies = await GetPage(page, sort);
-  console.log(movies[0]);
+  $("#body-list").append(`
+    <button class="btn btn-primary m-5" type="button" disabled>
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      Loading...
+    </button>
+  `);
+
+  movies = await GetPage();
+
+  $("#body-list").empty();
   movies_count = movies.length;
-  console.log(movies);
-  for (i = 0; i < 20; i += 2) {
+  for (i = 0; i < movies_count; i += 2) {
     rowID = i / 2;
     $("#body-list").append(`
         <div class="row p-5" id="row-${rowID}">
@@ -48,11 +58,44 @@ async function DisplayPage(page, sort) {
   }
 }
 
-async function ChangePage(page, sort) {
+async function ChangePage(page) {
+  PAGE = page;
   $("li").removeClass("active");
   $(`#li${page}`).addClass("active");
-
-  DisplayPage(page, sort);
+  if(IS_SEARCH){
+    FETCH_LINK = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&page=${PAGE}&query=${QUERY}`;
+  } else{
+    FETCH_LINK = `https://api.themoviedb.org/3/movie/${SORTBY}?api_key=${API_KEY}&page=${PAGE}`;
+  }
+  await DisplayPage();
 }
 
-ChangePage(1, "popular");
+async function SearchMovies() {
+  QUERY = $("#search-input").val();
+  if(QUERY != ''){
+    PAGE = 1;
+    IS_SEARCH = true;
+    $("li").removeClass("active");
+    $(`#li1`).addClass("active");
+    FETCH_LINK = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&page=${PAGE}&query=${QUERY}`;
+  } else{
+    PAGE = 1;
+    IS_SEARCH = false;
+    FETCH_LINK = `https://api.themoviedb.org/3/movie/${SORTBY}?api_key=${API_KEY}&page=${PAGE}`;
+  }
+  await DisplayPage();
+}
+
+async function reset() {
+  PAGE = 1;
+  IS_SEARCH = false;
+  $("#search-input").val('');
+
+  $("li").removeClass("active");
+  $(`#li1`).addClass("active");
+
+  FETCH_LINK = `https://api.themoviedb.org/3/movie/${SORTBY}?api_key=${API_KEY}&page=${PAGE}`;
+  await DisplayPage();
+}
+
+ChangePage(1);

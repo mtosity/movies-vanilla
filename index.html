@@ -29,11 +29,11 @@
 
     <title>Document</title>
   </head>
-  <body class="bg-dark">
+  <body class="bg-secondary">
     <div class="container-fulid">
       <!-- navigaiton -->
-      <nav class="navbar-expand-lg navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Minhtamos movies list</a>
+      <nav class="navbar-expand-lg navbar navbar-dark bg-dark">
+        <a class="navbar-brand text-success" href="#" onclick="reset()">Minhtamos movies list</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -60,48 +60,49 @@
               >
                 Sort by
               </a>
-              <div class="dropdown-menu bg-info" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item " href="#">Popular</a>
+              <div class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item active text-white" href="#">Popular</a>
                 <a class="dropdown-item" href="#">Top rated</a>
                 <a class="dropdown-item" href="#">Upcoming</a>
               </div>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
+          <form class="form-inline my-2 my-lg-0" onsubmit="SearchMovies()">
             <input
               class="form-control mr-sm-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
+              id="search-input"
             />
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
               Search
             </button>
           </form>
         </div>
       </nav>
       <!-- body -->
-      <div class="p-2 bg-dark justify-content-between" id="body-list"></div>
+      <div class="p-2 justify-content-between" id="body-list"></div>
       <!-- paging -->
       <div class="ml-5">
         <nav aria-label="Page navigation example m-2">
           <ul class="pagination">
-            <li id="li1" class="page-item active" onclick="ChangePage(1, 'popular')">
+            <li id="li1" class="page-item active" onclick="ChangePage(1)">
               <a class="page-link" href="#">1</a>
             </li>
-            <li id="li2" class="page-item" onclick="ChangePage(2, 'popular')">
+            <li id="li2" class="page-item" onclick="ChangePage(2)">
               <a class="page-link" href="#">2</a>
             </li>
-            <li id="li3" class="page-item" onclick="ChangePage(3, 'popular')">
+            <li id="li3" class="page-item" onclick="ChangePage(3)">
               <a class="page-link" href="#">3</a>
             </li>
-            <li id="li4" class="page-item" onclick="ChangePage(4, 'popular')">
+            <li id="li4" class="page-item" onclick="ChangePage(4)">
               <a class="page-link" href="#">4</a>
             </li>
-            <li id="li5" class="page-item" onclick="ChangePage(5, 'popular')">
+            <li id="li5" class="page-item" onclick="ChangePage(5)">
               <a class="page-link" href="#">5</a>
             </li>
-            <li id="li6" class="page-item" onclick="ChangePage(6, 'popular')">
+            <li id="li6" class="page-item" onclick="ChangePage(6)">
               <a class="page-link" href="#">6</a>
             </li>
           </ul>
