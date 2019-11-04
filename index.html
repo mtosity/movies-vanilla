@@ -33,18 +33,9 @@
     <div class="container-fulid">
       <!-- navigaiton -->
       <nav class="navbar-expand-lg navbar navbar-dark bg-dark">
-        <a class="navbar-brand text-success" href="#" onclick="reset()">Minhtamos movies list</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+        <a class="navbar-brand text-light" href="#" onclick="reset()"
+          >Minhtamos movies list</a
         >
-          <span class="navbar-toggler-icon"></span>
-        </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
@@ -60,10 +51,13 @@
               >
                 Sort by
               </a>
-              <div class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item active text-white" href="#">Popular</a>
-                <a class="dropdown-item" href="#">Top rated</a>
-                <a class="dropdown-item" href="#">Upcoming</a>
+              <div
+                class="dropdown-menu bg-secondary"
+                aria-labelledby="navbarDropdown"
+              >
+                <a class="dropdown-item active text-white sorta" onclick="ChangeSortby('popular')" id="popular">Popular</a>
+                <a class="dropdown-item sorta" onclick="ChangeSortby('top_rated')" id="top_rated">Top rated</a>
+                <a class="dropdown-item sorta" onclick="ChangeSortby('upcoming')" id="upcoming">Upcoming</a>
               </div>
             </li>
           </ul>
@@ -71,10 +65,33 @@
             <input
               class="form-control mr-sm-2"
               type="search"
-              placeholder="Search"
+              placeholder="Search movies"
               aria-label="Search"
               id="search-input"
             />
+            <div class="form-check mx-2">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="exampleRadios"
+                id="moviesRadio"
+                value="option1"
+                checked
+              />
+              <label class="form-check-label text-light mr-3" for="exampleRadios1">
+                Search by movies
+              </label>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="exampleRadios"
+                id="actorsRadio"
+                value="option1"
+              />
+              <label class="form-check-label text-light" for="exampleRadios1">
+                Search by actors
+              </label>
+            </div>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
               Search
             </button>
@@ -105,11 +122,24 @@
             <li id="li6" class="page-item" onclick="ChangePage(6)">
               <a class="page-link" href="#">6</a>
             </li>
+            <li id="li7" class="page-item" onclick="ChangePage(7)">
+              <a class="page-link" href="#">7</a>
+            </li>
+            <li id="li8" class="page-item" onclick="ChangePage(8)">
+              <a class="page-link" href="#">8</a>
+            </li>
+            <li id="li9" class="page-item" onclick="ChangePage(9)">
+              <a class="page-link" href="#">9</a>
+            </li>
+            <li id="li10" class="page-item" onclick="ChangePage(10)">
+              <a class="page-link" href="#">10</a>
+            </li>
           </ul>
         </nav>
       </div>
     </div>
   </body>
 
+  <script src="./constants.js"></script>
   <script src="./movies.js"></script>
 </html>
