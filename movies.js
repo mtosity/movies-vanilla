@@ -56,7 +56,7 @@ async function DisplayPage() {
       `);
       for (j = i; j < i + 2; j++) {
         $(`#row-${rowID}`).append(`
-              <div class="card mb-3 col mx-2">
+              <div class="card mb-3 mx-2 col-md">
                   <div class="row no-gutters">
                   <div class="col-md-4 text-center">
                       <img src="https://image.tmdb.org/t/p/original/${movies[j].poster_path}" class="card-img" alt="Poster">

@@ -53,9 +53,9 @@ async function DisplayMovieDetail() {
                 </p>
               </div>
               <div class="row mx-5">
-                <button type="button" class="btn btn-primary mx-2">Download</button>
-                <button type="button" class="btn btn-success mx-2">Trailer</button>
-                <button type="button" class="btn btn-danger mx-2">Xem phim</button>
+                <button type="button" class="btn btn-primary mx-2 my-2">Download</button>
+                <button type="button" class="btn btn-success mx-2 my-2">Trailer</button>
+                <button type="button" class="btn btn-danger mx-2 my-2">Xem phim</button>
               </div>
             </div>
           </div>
