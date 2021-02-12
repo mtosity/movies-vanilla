@@ -6,4 +6,4 @@
 * Using bootstrap and jquery
 * Review form is not working
 ## Demo
-https://minhtamos.github.io/movies-vanilla
+https://mtosity.github.io/movies-vanilla
